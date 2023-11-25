@@ -1,0 +1,42 @@
+# python environment
+.env
+__pycache__
+
+### pretrain
+# dataset
+pretrain/dataset/ja.txt
+pretrain/dataset/jawiki-latest-pages-articles.xml
+pretrain/dataset/wiki_preprocess.txt
+pretrain/dataset/wiki.txt
+pretrain/dataset/wiki_preprocess.zip
+
+# module
+pretrain/module/jumanpp-2.0.0-rc4/*
+pretrain/module/jumanpp-2.0.0-rc4.tar.xz
+
+# preprocess
+pretrain/preprocess/cc100_mrph.txt
+pretrain/preprocess/wiki_mrph.txt
+pretrain/preprocess/juman-bpe-wiki-cc100.json
+pretrain/preprocess/merge_dataset.txt
+pretrain/preprocess/bpe_tokenizer
+pretrain/preprocess/spm_tokenizer
+pretrain/preprocess/bpe_tokenizer.zip
+pretrain/preprocess/wiki_mrph.zip
+
+# train
+pretrain/train/checkpoints-*
+pretrain/train/logs-*
+
+### fine-tuning
+# dataset
+fine-tuning/dataset/databricks-dolly-15k-ja.txt
+fine-tuning/dataset/databricks-dolly-15k-ja
+
+# train
+fine-tuning/train/checkpoints-finetuning
+fine-tuning/train/logs-finetuning
+
+
+# log
+log

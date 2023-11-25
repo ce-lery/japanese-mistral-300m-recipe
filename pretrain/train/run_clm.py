@@ -248,12 +248,12 @@ def main():
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TrainingArguments))
-    if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
-        # If we pass only one argument to the script and it's the path to a json file,
-        # let's parse it to get our arguments.
-        model_args, data_args, training_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))
-    else:
-        model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+    # if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
+    #     # If we pass only one argument to the script and it's the path to a json file,
+    #     # let's parse it to get our arguments.
+    model_args, data_args, training_args = parser.parse_json_file(json_file=os.path.abspath(sys.argv[1]))
+    # else:
+    #     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
 
     if model_args.use_auth_token is not None:
         warnings.warn(
@@ -449,7 +449,20 @@ def main():
             low_cpu_mem_usage=model_args.low_cpu_mem_usage,
         )
     else:
-        model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
+        from transformers import AutoModelForCausalLM, MistralForCausalLM, MistralConfig   
+        import json
+
+        def load_config_from_json(config_file):
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+                config = MistralConfig.from_dict(config)
+            return config
+
+        # model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
+        config = load_config_from_json(config_file = "mistral-300m/config.json")    
+        model = MistralForCausalLM(config)
+        print("mistral config:",config)
+        print("mistral model architecture:",model)
         n_params = sum({p.data_ptr(): p.numel() for p in model.parameters()}.values())
         logger.info(f"Training new model from scratch - Total size={n_params/2**20:.2f}M params")
 
