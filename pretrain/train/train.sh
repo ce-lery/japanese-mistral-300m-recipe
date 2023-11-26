@@ -12,10 +12,6 @@ if [ ! -d "../.env" ];then
 fi
 source ../.env/bin/activate
 
-# for sentencepice
-# if [ ! -e "sentencepiece_model_pb2.py" ];then
-#     wget https://raw.githubusercontent.com/google/sentencepiece/master/python/src/sentencepiece/sentencepiece_model_pb2.py
-# fi
 
 cd train
 
