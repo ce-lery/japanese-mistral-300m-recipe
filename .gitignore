@@ -1,5 +1,6 @@
 # python environment
 .env
+.env_py310
 __pycache__
 
 ### pretrain
