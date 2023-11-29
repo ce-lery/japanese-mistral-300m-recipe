@@ -8,7 +8,7 @@
     "hidden_size": 1024,
     "initializer_range": 0.02,
     "intermediate_size": 2400,
-    "max_position_embeddings": 1024,
+    "max_position_embeddings": 4096,
     "model_type": "mistral",
     "num_attention_heads": 16,
     "num_hidden_layers": 24,

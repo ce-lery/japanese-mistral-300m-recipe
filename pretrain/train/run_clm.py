@@ -459,8 +459,16 @@ def main():
             return config
 
         # model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
-        config = load_config_from_json(config_file = "mistral-300m/config.json")    
-        model = MistralForCausalLM(config)
+        config = load_config_from_json(config_file = "mistral-300m/config.json")
+        # model = MistralForCausalLM(config)
+        #refer:https://github.com/huggingface/transformers/issues/21610
+        from collections import OrderedDict
+
+        model = MistralForCausalLM.from_pretrained(pretrained_model_name_or_path=None, 
+                                                    config=config, 
+                                                    state_dict=OrderedDict(),
+                                                    use_flash_attention_2=True)
+
         print("mistral config:",config)
         print("mistral model architecture:",model)
         n_params = sum({p.data_ptr(): p.numel() for p in model.parameters()}.values())
@@ -526,6 +534,7 @@ def main():
                 f"({tokenizer.model_max_length}). Using block_size={tokenizer.model_max_length}."
             )
         block_size = min(data_args.block_size, tokenizer.model_max_length)
+    print("block_size:",block_size)
 
     # Main data processing function that will concatenate all texts from our dataset and generate chunks of block_size.
     def group_texts(examples):
