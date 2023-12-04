@@ -33,6 +33,5 @@
     "push_to_hub":false,
     "dataloader_num_workers": 8,
     "optim":"adamw_bnb_8bit" ,
-    "torch_compile":true ,
-    "torch_compile_backend": "inductor"
+    "torch_compile":true
 }
