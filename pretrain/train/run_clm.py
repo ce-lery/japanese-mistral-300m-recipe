@@ -437,7 +437,8 @@ def main():
             if model_args.torch_dtype in ["auto", None]
             else getattr(torch, model_args.torch_dtype)
         )
-        model = AutoModelForCausalLM.from_pretrained(
+        from transformers import  MistralForCausalLM, MistralConfig   
+        model = MistralForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             from_tf=bool(".ckpt" in model_args.model_name_or_path),
             config=config,
@@ -447,9 +448,10 @@ def main():
             trust_remote_code=model_args.trust_remote_code,
             torch_dtype=torch_dtype,
             low_cpu_mem_usage=model_args.low_cpu_mem_usage,
+            use_flash_attention_2=True
         )
     else:
-        from transformers import AutoModelForCausalLM, MistralForCausalLM, MistralConfig   
+        from transformers import  MistralForCausalLM, MistralConfig   
         import json
 
         def load_config_from_json(config_file):

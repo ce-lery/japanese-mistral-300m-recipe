@@ -16,7 +16,7 @@ model = AutoModelForCausalLM.from_pretrained(current_path+"/../train/checkpoints
 
 # """
 MAX_ASSISTANT_LENGTH = 100
-MAX_INPUT_LENGTH = 256
+MAX_INPUT_LENGTH = 1024
 INPUT_PROMPT = r'<s>\n以下は、タスクを説明する指示と、文脈のある入力の組み合わせです。要求を適切に満たす応答を書きなさい。\n[SEP]\n指示:\n{instruction}\n[SEP]\n入力:\n{input}\n[SEP]\n応答:\n'
 NO_INPUT_PROMPT = r'<s>\n以下は、タスクを説明する指示です。要求を適切に満たす応答を書きなさい。\n[SEP]\n指示:\n{instruction}\n[SEP]\n応答:\n'
 
@@ -35,17 +35,19 @@ def generate_response(instruction, input_text):
     prompt = prepare_input(instruction, input_text)
     token_ids = tokenizer.encode(prompt, add_special_tokens=False, return_tensors="pt")
     n = len(token_ids[0])
+    # print(n)
 
     with torch.no_grad():
         output_ids = model.generate(
             token_ids.to(model.device),
             min_length=n,
             max_length=min(MAX_INPUT_LENGTH, n + MAX_ASSISTANT_LENGTH),
-            temperature=0.7,
+            top_p=0.95,
+            top_k=50,
+            temperature=0.4,
             do_sample=True,
-            # do_sample=True,
-            # no_repeat_ngram_size=2,
-            # num_beams=3,
+            no_repeat_ngram_size=2,
+            num_beams=2,
             pad_token_id=tokenizer.pad_token_id,
             bos_token_id=tokenizer.bos_token_id,
             eos_token_id=tokenizer.eos_token_id,
