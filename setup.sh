@@ -24,6 +24,8 @@ cd ../../
 # install python library
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
+# refer:https://github.com/Dao-AILab/flash-attention/issues/453
+pip install flash-attn==2.3.4 --no-build-isolation
 
 # install python library from github
 mkdir -p module 
