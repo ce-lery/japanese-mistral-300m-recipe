@@ -16,7 +16,7 @@ model = AutoModelForCausalLM.from_pretrained(current_path+"/../train/checkpoints
 
 # """
 MAX_ASSISTANT_LENGTH = 100
-MAX_INPUT_LENGTH = 1024
+MAX_INPUT_LENGTH = 128
 INPUT_PROMPT = r'<s>\n以下は、タスクを説明する指示と、文脈のある入力の組み合わせです。要求を適切に満たす応答を書きなさい。\n[SEP]\n指示:\n{instruction}\n[SEP]\n入力:\n{input}\n[SEP]\n応答:\n'
 NO_INPUT_PROMPT = r'<s>\n以下は、タスクを説明する指示です。要求を適切に満たす応答を書きなさい。\n[SEP]\n指示:\n{instruction}\n[SEP]\n応答:\n'
 
@@ -47,7 +47,7 @@ def generate_response(instruction, input_text):
             temperature=0.4,
             do_sample=True,
             no_repeat_ngram_size=2,
-            num_beams=2,
+            num_beams=3,
             pad_token_id=tokenizer.pad_token_id,
             bos_token_id=tokenizer.bos_token_id,
             eos_token_id=tokenizer.eos_token_id,
