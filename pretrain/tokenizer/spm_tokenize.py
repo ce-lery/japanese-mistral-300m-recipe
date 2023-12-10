@@ -6,8 +6,8 @@ MODEL_PREFIX = "spm-wiki-cc100-for-spm-bytefallback"
 OUTPUT_MODEL_DIR = "spm_tokenizer_neologdn_bytefallback_nofast"
 
 spm.SentencePieceTrainer.train(
-    input="../preprocess/merge_dataset_for_spm.txt",  # コーパスファイル
-    model_type="bpe",  # デフォルト
+    input="../dataset/merge_dataset_for_tokenizer.txt",  # コーパスファイル
+    model_type="unigram",  # デフォルト
     model_prefix=MODEL_PREFIX,  # 出力されるモデルのファイル名に使われる
     add_dummy_prefix=False,# rinna-3.6bに習って、文章の先頭にスペースが追加されないように
     byte_fallback=True,# rinna-3.6bに習って、未知語をutf-8バイトに分解するために
@@ -37,7 +37,7 @@ print(sp.encode_as_ids("これは、テストです。"))
 
 # decode: id => text
 print(sp.decode_pieces(['▁', 'これは', '、', 'テスト', 'です', '。']))
-print(sp.decode_ids([602, 8, 1721, 18, 7]))
+print(sp.decode_ids([381, 260, 1662, 279, 261]))
 
 # check vocab size
 print(sp.get_piece_size())
