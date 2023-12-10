@@ -43,10 +43,7 @@ print(sp.decode_ids([381, 260, 1662, 279, 261]))
 print(sp.get_piece_size())
 
 # Transformer API
-spm_tokenizer = SentencePieceUnigramTokenizer.from_spm(MODEL_PREFIX+".model")
-print(spm_tokenizer._tokenizer)
 tokenizer = T5Tokenizer(
-    # tokenizer_object=spm_tokenizer._tokenizer, 
     vocab_file=MODEL_PREFIX+".model",
     unk_token = '[UNK]',
     bos_token = '<s>',

@@ -12,17 +12,17 @@ cd dataset
 ### japanese CC-100 ###
 # 0.069TB
 echo "# download japanese CC-100"
-# wget http://data.statmt.org/cc-100/ja.txt.xz
-# unxz -v ja.txt.xz
-# # 不要な空行を削除
-# sed -i '/^$/d' ja.txt
-# head -n15 ja.txt
+wget http://data.statmt.org/cc-100/ja.txt.xz
+unxz -v ja.txt.xz
+# 不要な空行を削除
+sed -i '/^$/d' ja.txt
+head -n15 ja.txt
 
 ### japanese wikipedia ###
 # 0.004TB
 echo "# download japanese wikipedia"
-# wget https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles.xml.bz2
-# bunzip2 jawiki-latest-pages-articles.xml.bz2
+wget https://dumps.wikimedia.org/jawiki/latest/jawiki-latest-pages-articles.xml.bz2
+bunzip2 jawiki-latest-pages-articles.xml.bz2
 # xmlからテキストを抽出
 python -m wikiextractor.WikiExtractor jawiki-latest-pages-articles.xml
 find text/ | grep wiki | awk '{system("cat "$0" >> wiki.txt")}'
@@ -89,3 +89,5 @@ wc -l test.txt
 # delete intermediate files
 rm wiki_train.txt
 rm wiki_test.txt
+rm cc100_mrph_for_spm.txt
+rm wiki_mrph_for_spm.txt
