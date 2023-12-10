@@ -10,20 +10,21 @@ pretrain/dataset/jawiki-latest-pages-articles.xml
 pretrain/dataset/wiki_preprocess.txt
 pretrain/dataset/wiki.txt
 pretrain/dataset/wiki_preprocess.zip
+pretrain/dataset/archive
+pretrain/dataset/cc100_mrph_for_spm.txt
+pretrain/dataset/merge_dataset_for_tokenizer.txt
+pretrain/dataset/test.txt
+pretrain/dataset/train.txt
 
 # module
 pretrain/module/jumanpp-2.0.0-rc4/*
 pretrain/module/jumanpp-2.0.0-rc4.tar.xz
 
 # preprocess
-pretrain/preprocess/cc100_mrph.txt
-pretrain/preprocess/wiki_mrph.txt
-pretrain/preprocess/juman-bpe-wiki-cc100.json
-pretrain/preprocess/merge_dataset.txt
-pretrain/preprocess/bpe_tokenizer
-pretrain/preprocess/spm_tokenizer
-pretrain/preprocess/bpe_tokenizer.zip
-pretrain/preprocess/wiki_mrph.zip
+
+pretrain/tokenizer/spm-wiki-cc100-for-spm-bytefallback.*
+pretrain/tokenizer/spm_tokenizer_neologdn_bytefallback_nofast
+pretrain/tokenizer/spm_tokenizer_neologdn_bytefallback_nofast_origin
 
 # train
 pretrain/train/checkpoints-*
@@ -37,7 +38,6 @@ fine-tuning/dataset/databricks-dolly-15k-ja
 # train
 fine-tuning/train/checkpoints-finetuning
 fine-tuning/train/logs-finetuning
-
 
 # log
 log
