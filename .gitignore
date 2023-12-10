@@ -3,6 +3,9 @@
 .env_py310
 __pycache__
 
+### example
+example/tochcompile_and_deepspeed/*
+
 ### pretrain
 # dataset
 pretrain/dataset/ja.txt
