@@ -27,6 +27,19 @@ pip install -r requirements.txt
 # refer:https://github.com/Dao-AILab/flash-attention/issues/453
 pip install flash-attn==2.3.4 --no-build-isolation
 
+# # create python virtual environment for creating dataset
+deactivate
+pyenv install 3.10.10
+mkdir -p .env_py310
+cd .env_py310
+pyenv local 3.10.10
+python -m venv ./
+cd bin
+source activate
+./python -m pip install --upgrade pip
+cd ../../
+pip install wikiextractor==3.0.6 neologdn==0.5.2 tqdm==4.66.1
+
 # install python library from github
 mkdir -p module 
 cd module
@@ -34,12 +47,3 @@ git clone https://github.com/ku-nlp/python-textformatting.git
 cd python-textformatting
 python setup.py install
 cd ../../
-
-
-
-
-
-
-
-
-
