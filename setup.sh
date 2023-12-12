@@ -30,9 +30,9 @@ pip install flash-attn==2.3.4 --no-build-isolation
 # # create python virtual environment for creating dataset
 deactivate
 pyenv install 3.10.10
-pyenv local 3.10.10
 mkdir -p .env_py310
 cd .env_py310
+pyenv local 3.10.10
 python -m venv ./
 cd bin
 source activate
