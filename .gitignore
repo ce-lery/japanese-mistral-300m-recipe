@@ -6,6 +6,9 @@ __pycache__
 ### example
 example/tochcompile_and_deepspeed/*
 
+### example
+module/python-textformatting/*
+
 ### pretrain
 # dataset
 pretrain/dataset/ja.txt
@@ -18,10 +21,6 @@ pretrain/dataset/cc100_mrph_for_spm.txt
 pretrain/dataset/merge_dataset_for_tokenizer.txt
 pretrain/dataset/test.txt
 pretrain/dataset/train.txt
-
-# module
-pretrain/module/jumanpp-2.0.0-rc4/*
-pretrain/module/jumanpp-2.0.0-rc4.tar.xz
 
 # preprocess
 
