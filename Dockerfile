@@ -39,4 +39,5 @@ RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
     echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 
 RUN pyenv install 3.11.6
+RUN pyenv install 3.10.10
 RUN pyenv global 3.11.6
