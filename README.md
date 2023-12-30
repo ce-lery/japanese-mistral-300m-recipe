@@ -31,7 +31,7 @@ If you create pulreqest, I'm very happy! -->
 
 ## Quick Started
 
-If you want to try out the contents of this repository quickly and easily, please use this ipynb file.
+If you want to try out the contents of this repository quickly and easily, please use [this ipynb file](https://colab.research.google.com/github/ce-lery/japanese-mistral-300m-recipe/blob/main/quick_start.ipynb).
 
 
 ## Getting Started
@@ -39,8 +39,10 @@ If you want to try out the contents of this repository quickly and easily, pleas
 Build a Python environment using Docker files.
 
 ```bash
+git clone https://github.com/ce-lery/japanese-mistral-300m-recipe.git
+cd japanese-mistral-300m-recipe
 docker build -t cuda12.1-cudnn8-python3.11.6 ./
-docker run -v ./:/home/japanese-gpt2/ -it --gpus all cuda12.1-cudnn8-python3.11.6
+docker run -v ./:/home/japanese-mistral-300m-recipe/ -it --gpus all cuda12.1-cudnn8-python3.11.6
 ```
 
 Run the shell script with the following command.  

@@ -91,3 +91,5 @@ rm wiki_train.txt
 rm wiki_test.txt
 rm cc100_mrph_for_spm.txt
 rm wiki_mrph_for_spm.txt
+
+cd ../
