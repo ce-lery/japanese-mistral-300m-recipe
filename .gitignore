@@ -21,6 +21,7 @@ pretrain/dataset/cc100_mrph_for_spm.txt
 pretrain/dataset/merge_dataset_for_tokenizer.txt
 pretrain/dataset/test.txt
 pretrain/dataset/train.txt
+pretrain/input/*
 
 # preprocess
 

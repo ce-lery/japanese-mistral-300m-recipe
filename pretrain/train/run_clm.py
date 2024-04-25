@@ -361,6 +361,12 @@ def main():
         if extension == "txt":
             extension = "text"
             dataset_args["keep_linebreaks"] = data_args.keep_linebreaks
+        if extension == "jsonl":
+            extension = "json"
+        print("extention:",extension)
+        print(" data_files[train]:", data_files["train"])
+        print(" data_files[validation]:", data_files["validation"])
+
         raw_datasets = load_dataset(
             extension,
             data_files=data_files,
@@ -461,7 +467,7 @@ def main():
             return config
 
         # model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
-        config = load_config_from_json(config_file = os.path.join(os.path.dirname(__file__),"mistral-300m/config.json"))
+        config = load_config_from_json(config_file = os.path.join(os.path.dirname(__file__),"mistral-3b/config.json"))
         # model = MistralForCausalLM(config)
         #refer:https://github.com/huggingface/transformers/issues/21610
         from collections import OrderedDict
