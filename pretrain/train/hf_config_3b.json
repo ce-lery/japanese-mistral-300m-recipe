@@ -5,6 +5,7 @@
     "train_file":"../input/train.jsonl",
     "validation_file":"../input/test.jsonl",
     "output_dir":"checkpoints-mistral-3B",
+    "cache_dir":"checkpoints-mistral-3B/cache",
     "do_train":true,
     "do_eval":true,
     "prediction_loss_only":true,
