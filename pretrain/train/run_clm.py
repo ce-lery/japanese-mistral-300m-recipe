@@ -365,7 +365,7 @@ def main():
             extension = "json"
         print("extention:",extension)
         print(" data_files[train]:", data_files["train"])
-        print(" data_files[validation]:", data_files["validation"])
+        # print(" data_files[validation]:", data_files["validation"])
 
         raw_datasets = load_dataset(
             extension,
@@ -467,7 +467,7 @@ def main():
             return config
 
         # model = AutoModelForCausalLM.from_config(config, trust_remote_code=model_args.trust_remote_code)
-        config = load_config_from_json(config_file = os.path.join(os.path.dirname(__file__),"mistral-3b/config.json"))
+        config = load_config_from_json(config_file = os.path.join(os.path.dirname(__file__),"mistral-300m/config.json"))
         # model = MistralForCausalLM(config)
         #refer:https://github.com/huggingface/transformers/issues/21610
         from collections import OrderedDict
@@ -501,7 +501,15 @@ def main():
 
     def tokenize_function(examples):
         with CaptureLogger(tok_logger) as cl:
-            output = tokenizer(examples[text_column_name])
+            # TODO: remove following change
+            # add BOS and EOS
+            processed_texts = ["<s> + "text + "</s>" for text in examples[text_column_name]]
+            output = tokenizer(processed_texts)
+            # If there are other columns in examples, we need to preserve them
+            for key in examples.keys():
+                if key != text_column_name:
+                    output[key] = examples[key]
+
         # clm input could be much much longer than block_size
         if "Token indices sequence length is longer than the" in cl.out:
             tok_logger.warning(
