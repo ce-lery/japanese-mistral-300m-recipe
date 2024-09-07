@@ -22,7 +22,7 @@ cd train
 # python run_clm.py hf_config_3b.json
 
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6
-torchrun --standalone --nnodes=1 --nproc-per-node=7 run_clm.py hf_config_3b.json
+torchrun --standalone --nnodes=1 --nproc-per-node=7 run_clm.py hf_config_39m.json
 cd ../
 
 

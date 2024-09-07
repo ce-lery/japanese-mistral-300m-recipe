@@ -12,7 +12,7 @@ spm.SentencePieceTrainer.train(
     add_dummy_prefix=False,# rinna-3.6bに習って、文章の先頭にスペースが追加されないように
     byte_fallback=True,# rinna-3.6bに習って、未知語をutf-8バイトに分解するために
     # remove_extra_whitespace=False, # rinna-3.6bにならって
-    vocab_size=50000,  # vocab number
+    vocab_size=32400,  # vocab number
     character_coverage=0.9995,
     unk_piece="[UNK]",
     pad_piece="[PAD]",
@@ -50,7 +50,7 @@ tokenizer = T5Tokenizer(
     eos_token = '</s>',
     pad_token = '[PAD]',
     extra_ids=0,
-    model_max_length=50000,
+    model_max_length=32400,
 )
 tokenizer.save_pretrained(OUTPUT_MODEL_DIR) 
 
