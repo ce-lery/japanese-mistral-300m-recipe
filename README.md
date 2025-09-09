@@ -41,8 +41,8 @@ Build a Python environment using Docker files.
 ```bash
 git clone https://github.com/ce-lery/japanese-mistral-300m-recipe.git
 cd japanese-mistral-300m-recipe
-docker build -t cuda12.1-cudnn8-python3.11.6 ./
-docker run -v ./:/home/japanese-mistral-300m-recipe/ -it --gpus all cuda12.1-cudnn8-python3.11.6
+docker compose build
+docker compose run mistral300m
 ```
 
 Run the shell script with the following command.  

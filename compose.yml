@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mistral300m:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/workspace/japanese-mistral-300m-recipe/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]  # command: --gpus all -it -d 
+    ports:
+      - "80:8888"
+      # - "8888:8888" # for jupyter
+      - "6006:6006"
+
+# reference
+# https://qiita.com/iwankoTG/items/f1e3e4d13cda8e8eb1ad
