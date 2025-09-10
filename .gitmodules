@@ -1,0 +1,9 @@
+[submodule "third_party/bert-japanese"]
+	path = third_party/bert-japanese
+	url = https://github.com/cl-tohoku/bert-japanese.git
+[submodule "third_party/corpus-cleaner"]
+	path = third_party/corpus-cleaner
+	url = https://github.com/ce-lery/corpus-cleaner.git
+[submodule "third_party/mecab-ipadic-neologd"]
+	path = third_party/mecab-ipadic-neologd
+	url = https://github.com/neologd/mecab-ipadic-neologd.git
