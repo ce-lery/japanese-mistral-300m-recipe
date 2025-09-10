@@ -49,6 +49,8 @@ Run the shell script with the following command.
 Execute python virtual environment construction, pretrain, and fine tuning in order.  
 
 ```bash
+uv sync --extra build --extra compile
+
 bash run_all.sh
 ```
 
