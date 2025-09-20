@@ -2,6 +2,7 @@
 .env
 .env_py310
 __pycache__
+.cache
 
 ### example
 example/tochcompile_and_deepspeed/*
@@ -21,6 +22,7 @@ pretrain/dataset/cc100_mrph_for_spm.txt
 pretrain/dataset/merge_dataset_for_tokenizer.txt
 pretrain/dataset/test.txt
 pretrain/dataset/train.txt
+pretrain/dataset/results
 
 # preprocess
 
@@ -43,3 +45,6 @@ fine-tuning/train/logs-finetuning
 
 # log
 log
+
+# others
+pretrain/*/results/*

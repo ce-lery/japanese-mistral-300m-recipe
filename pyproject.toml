@@ -9,13 +9,21 @@ dependencies = [
     "apollo-torch>=1.0.3",
     "datasets>=4.0.0",
     "evaluate>=0.4.5",
+    "fugashi==1.3.2",
+    "ipadic>=1.0.0",
     "liger-kernel>=0.6.1",
+    "mecab-python3==1.0.9",
+    "peft>=0.17.1",
     "protobuf>=6.32.0",
+    "pykakasi==2.3.0",
+    "scikit-learn>=1.7.2",
     "sentencepiece>=0.2.1",
     "tensorboard>=2.20.0",
     "torch>=2.8.0",
     "torchao>=0.12.0",
     "transformers>=4.55.2",
+    "trl>=0.22.2",
+    "unidic-lite==1.0.8",
 ]
 
 [project.optional-dependencies]
