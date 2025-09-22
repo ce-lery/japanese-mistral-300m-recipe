@@ -1,5 +1,5 @@
 import sentencepiece as spm
-from transformers import LlamaTokenizer
+from transformers import LlamaTokenizerFast
 import argparse
 from argparse import Namespace
 
@@ -30,15 +30,15 @@ def train_sentencepiece_tokenizer(corpus_path:str,
     sp.Load(model_prefix+".model")
 
     # encode: text => is
-    print(sp.encode_as_pieces("これは、テストです。"))
-    print(sp.encode_as_ids("これは、テストです。"))
+    print(sp.encode_as_pieces("蟋蟀が鳴いている。"))
+    print(sp.encode_as_ids("蟋蟀が鳴いている。"))
 
     # decode: id => text
-    print(sp.decode_pieces(['▁', 'これは', '、', 'テスト', 'です', '。']))
-    print(sp.decode_ids([423, 260, 1866, 277, 261]))
+    # print(sp.decode_pieces(['▁', 'これは', '、', 'テスト', 'です', '。']))
+    print(sp.decode_ids([236, 163, 143, 236, 163, 132, 268, 3909, 4038, 261]))
 
     # Transformer API
-    tokenizer = LlamaTokenizer(
+    tokenizer = LlamaTokenizerFast(
         vocab_file=model_prefix+".model",
         unk_token = '[UNK]',
         bos_token = '<s>',
@@ -49,6 +49,9 @@ def train_sentencepiece_tokenizer(corpus_path:str,
         legacy=False
     )
     tokenizer.save_pretrained(output_dir) 
+
+    print(tokenizer.encode("蟋蟀が鳴いている。"))
+    print(tokenizer.decode([2, 236, 163, 143, 236, 163, 132, 268, 3909, 4038, 261]))
 
 if __name__ == "__main__": 
     parser = argparse.ArgumentParser(description="")

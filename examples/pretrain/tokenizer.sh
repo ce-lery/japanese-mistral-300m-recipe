@@ -10,7 +10,7 @@ mkdir -p results/tokenizer
 
 # create corpus for torkenizer
 uv run python ../../src/tokenizer/extract_text_of_jsonl.py \
-    --input_path="./results/dataset/train.jsonl" \
+    --input_path="./results/dataset/wiki.jsonl" \
     --output_path="./results/tokenizer/tokenizer_corpus.txt"
 
 # create tokenizer
