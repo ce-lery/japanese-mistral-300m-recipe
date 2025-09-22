@@ -9,6 +9,7 @@ print(device)
 # device=torch.device("cpu")
 
 model_path = current_path+"/../../examples/inst-tuning/results/train1/checkpoint-1323"
+# model_path = "ce-lery/mistral-300m-sft"
 tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False,trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(model_path,trust_remote_code=True).to(device)
 
@@ -39,21 +40,12 @@ def generate_response(prompt):
             do_sample=True,
             no_repeat_ngram_size=2,
             num_beams=3,
-            # pad_token_id=tokenizer.pad_token_id,
-            # bos_token_id=tokenizer.bos_token_id,
-            # eos_token_id=tokenizer.eos_token_id,
-            # bad_words_ids=[[tokenizer.unk_token_id]]
         )
     generated_text = tokenizer.decode(generated_tokens[0])
     # print(generated_tokens[0])
     print(generated_text.replace(tokenizer.eos_token, "\n"))
     # print(generated_text)
 
-    # output = tokenizer.decode(output_ids.tolist()[0])
-    # formatted_output_all = format_output(output)
-    # response = f"Assistant:{formatted_output_all.split('応答:')[-1].strip()}"
-
-    # return formatted_output_all, response 
 
 prompts = [
     "日本で一番高い山は何？",
@@ -65,10 +57,9 @@ prompts = [
     "日本の首都はどこ？",
     "こんにちは！",
     "兵庫県の県庁所在地の名前は？",
-
 ]
 
-# 各質問に対して応答を生成して表示
+# create text each prompt
 for prompt in prompts:
     generate_response(prompt)
 
