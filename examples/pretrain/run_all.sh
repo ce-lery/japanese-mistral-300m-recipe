@@ -1,21 +1,15 @@
 #!/bin/bash
 
-# activate venv
-if [ ! -d ".env" ]; then bash setup.sh; fi
-source .env/bin/activate
-
-cd pretrain
-
 # create dataset for pretrain
-bash dataset/dataset.sh
+bash dataset.sh
 
-# # train sentencepice tokenizer
-bash tokenizer/tokenizer.sh
+# train sentencepice tokenizer
+bash tokenizer.sh
 
-# # execute pretrain
-bash train/train.sh
+# execute pretrain
+bash train.sh
 
-# # inference with fine-tuned models
-bash inference/inference.sh
+# inference with fine-tuned models
+bash inference.sh
 
 cd ../
