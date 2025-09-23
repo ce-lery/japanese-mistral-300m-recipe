@@ -4,47 +4,9 @@
 __pycache__
 .cache
 
-### example
-example/tochcompile_and_deepspeed/*
-
-### example
-module/python-textformatting/*
-
-### pretrain
-# dataset
-pretrain/dataset/ja.txt
-pretrain/dataset/jawiki-latest-pages-articles.xml
-pretrain/dataset/wiki_preprocess.txt
-pretrain/dataset/wiki.txt
-pretrain/dataset/wiki_preprocess.zip
-pretrain/dataset/archive
-pretrain/dataset/cc100_mrph_for_spm.txt
-pretrain/dataset/merge_dataset_for_tokenizer.txt
-pretrain/dataset/test.txt
-pretrain/dataset/train.txt
-pretrain/dataset/results
-
-# preprocess
-
-pretrain/tokenizer/spm-wiki-cc100-for-spm-bytefallback.*
-pretrain/tokenizer/spm_tokenizer_neologdn_bytefallback_nofast
-pretrain/tokenizer/spm_tokenizer_neologdn_bytefallback_nofast_origin
-
-# train
-pretrain/train/checkpoints-*
-pretrain/train/logs-*
-
-### fine-tuning
-# dataset
-fine-tuning/dataset/databricks-dolly-15k-ja.txt
-fine-tuning/dataset/databricks-dolly-15k-ja
-
-# train
-fine-tuning/train/checkpoints-finetuning
-fine-tuning/train/logs-finetuning
+### output
+results
+src/util/split_jsonl.py
 
 # log
 log
-
-# others
-pretrain/*/results/*
