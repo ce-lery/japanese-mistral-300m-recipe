@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# create python virtual environment
-bash setup.sh
-
 # execute pretrain
-bash pretrain/pretrain.sh 
+cd examples/pretrain
+bash run_all.sh 
+cd ../../
 
 # execute fine-tuning
-bash fine-tuning/fine-tuning.sh
+cd examples/inst-tuning
+bash run_all.sh 
+cd ../../

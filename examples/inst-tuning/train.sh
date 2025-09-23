@@ -22,7 +22,7 @@ SECONDS=0
 #rm -r ./results/pretrain/$DIR_NAME/mistral2b_trial2
 uv run python ../../src/train/sft_train.py \
     --model_name_or_path  ../pretrain/results/train/mistral_300m/ \
-    --output_dir ./results/train1/ \
+    --output_dir ./results/train/mistral_300m_sft/ \
 
 time=$SECOND
 echo "process_time: $time sec"

@@ -8,9 +8,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 # device=torch.device("cpu")
 
-model_path = current_path+"/../../examples/inst-tuning/results/train1/checkpoint-1323"
+model_path = current_path+"/../../examples/inst-tuning/results/train1/mistral_300m_sft/checkpoint-1323"
 # model_path = "ce-lery/mistral-300m-sft"
-tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False,trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(model_path,trust_remote_code=True).to(device)
 
 print("model:\n",model)
