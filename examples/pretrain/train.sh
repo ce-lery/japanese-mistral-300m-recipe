@@ -17,7 +17,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 BATCH_SIZE=12
 GRADIENT_ACCUMULATION_STEPS=20
 EPOCH=1
-# DIR_NAME=usual_pretrain_mistral
+DIR_NAME=mistral_300m
 mkdir -p ./results/train/
 
 # intialize process counter
@@ -32,7 +32,7 @@ uv run python ../../src/train/run_clm.py \
     --config_name ../../src/config/config_mistral_300m.json \
     --tokenizer_name ./results/tokenizer/llamatokenizer \
     --train_file ./results/dataset/train.jsonl \
-    --output_dir ./results/train/mistral_300m \
+    --output_dir ./results/train/$DIR_NAME \
     --cache_dir ./results/train/.cache/ \
     --do_train \
     --do_eval \
@@ -41,7 +41,7 @@ uv run python ../../src/train/run_clm.py \
     --remove_unused_columns False \
     --learning_rate 3.0e-4 \
     --num_train_epochs $EPOCH \
-    --logging_dir ./results/train/logs/mistral_300m \
+    --logging_dir ./results/train/logs/$DIR_NAME \
     --logging_strategy "steps" \
     --logging_steps 10 \
     --save_strategy "steps" \
