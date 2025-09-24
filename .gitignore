@@ -1,6 +1,5 @@
 # python environment
-.env
-.env_py310
+.venv
 __pycache__
 .cache
 
