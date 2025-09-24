@@ -54,7 +54,7 @@ docker compose run mistral300m
 Create python environment with uv.
 
 ```bash
-# refer: 
+# refer: https://zenn.dev/ayutaso/articles/2a6353c657bbb7
 uv sync --extra build
 uv sync --extra build --extra compile
 ```
