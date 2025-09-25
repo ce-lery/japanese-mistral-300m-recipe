@@ -6,11 +6,14 @@ from argparse import Namespace
 
 torch.set_float32_matmul_precision('high')
 
-def inference(model_path:str, device: str = "cpu",prompt:str = "",):
+def inference(model_path:str, device: str = "cpu",prompt:str = ""):
     # MODEL_NAME = "../train/checkpoints-mistral-300M-jsonl"
 
     if (device != "cuda" and device != "cpu"):
         device = "cpu"
+    if not torch.cuda.is_available():
+        device = "cpu"
+    print("device:", device)
 
     tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     model = AutoModelForCausalLM.from_pretrained(model_path,
