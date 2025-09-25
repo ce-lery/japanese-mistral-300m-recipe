@@ -564,7 +564,7 @@ def main():
             #output = tokenizer(examples[text_column_name])
             # add BOS and EOS
             processed_texts = [text + tokenizer.eos_token for text in examples[text_column_name]]
-            output = tokenizer(processed_texts, add_special_tokens=False)
+            output = tokenizer(processed_texts)
             # # If there are other columns in examples, we need to preserve them
             # for key in examples.keys():
             #     if key != text_column_name:
