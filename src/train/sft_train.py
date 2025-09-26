@@ -85,7 +85,7 @@ def instruction_tune(model_name_or_path:str, device: str = "cpu",prompt:str = ""
     bos = tokenizer.bos_token
     collator = DataCollatorForLanguageModeling(
         completion_only_loss=True,
-        pad_token_id=0 # TODO: check here
+        pad_token_id=0
     )
     #https://github.com/huggingface/trl/blob/main/trl/trainer/sft_trainer.py
     # completion_mask==0 data, the labels are to be -100, and excluded from train
@@ -188,35 +188,6 @@ def instruction_tune(model_name_or_path:str, device: str = "cpu",prompt:str = ""
 
     print("SFT Training Completed.")
 
-    """ inference """
-    """
-    messages = [{"role": "user", "content": prompt}]
-    model = AutoModelForCausalLM.from_pretrained(output_dir+"/checkpoint-1323", trust_remote_code=True).to(device)
-    tokenizer = AutoTokenizer.from_pretrained(output_dir+"/checkpoint-1323", trust_remote_code=True, use_fast=False)
-
-    tokenized_chat = tokenizer.apply_chat_template(
-        messages,
-        tokenize=True,
-        add_generation_prompt=True,
-        return_tensors="pt"
-    )
-
-    with torch.no_grad():
-        generated_tokens = model.generate(tokenized_chat.to("cuda"), 
-                                        use_cache=True, 
-                                        max_new_tokens=1024,
-                                        do_sample=True,
-                                        early_stopping=False,
-                                        top_p=0.95,
-                                        top_k=50,
-                                        temperature=0.7,
-                                        # streamer=streamer,
-                                        no_repeat_ngram_size=2,
-                                        num_beams=3,
-    )
-    generated_text = tokenizer.decode(generated_tokens[0])
-    print(generated_text.replace(tokenizer.eos_token, "\n"))
-    """
 
 if __name__ == "__main__": 
     parser = argparse.ArgumentParser(description="")
